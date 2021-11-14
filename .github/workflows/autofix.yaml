@@ -9,4 +9,4 @@ jobs:
     - name: Install dependencies
       run: npm install
     - name: Lint & fix
-      run: eslint . --fix --ext .js
+      run: npx eslint . --fix --ext .js
