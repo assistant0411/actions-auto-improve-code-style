@@ -8,3 +8,5 @@ jobs:
         node-version: '14'
     - name: Install dependencies
       run: npm install
+    - name: Lint & fix
+      run: npx eslint --fix index.js
