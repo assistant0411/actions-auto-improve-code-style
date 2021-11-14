@@ -11,3 +11,5 @@ jobs:
       run: npm install
     - name: Lint & fix
       run: npx eslint . --fix --ext .js
+    - name: Check for autofixes
+      run: git status | grep modified
