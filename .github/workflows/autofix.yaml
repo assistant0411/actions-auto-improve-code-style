@@ -18,7 +18,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         branch: 'autofix'
-    - uses: connor-baer/action-sync-branch
+    - uses: connor-baer/action-sync-branch@main
       with:
         branch: 'autofix'
         token: ${{ secrets.GITHUB_TOKEN }}
