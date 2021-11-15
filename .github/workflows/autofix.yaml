@@ -16,3 +16,7 @@ jobs:
       with:
         branch: ${{ github.ref_name }}-autofix
         reviewers: ${{ github.actor }}
+        labels: autofix
+        delete-branch: true
+        title: "Improve codestyle"
+        body: "Automated PR to improve codestyle"
