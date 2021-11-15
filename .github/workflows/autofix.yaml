@@ -26,6 +26,7 @@ jobs:
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
         branch: 'autofix'
+        commit_author: octocat
     - name: Run the Action
       uses: devops-infra/action-pull-request@v0.4.2
       with:
