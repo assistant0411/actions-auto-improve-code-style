@@ -22,7 +22,7 @@ jobs:
       with:
         branch: 'autofix'
         token: ${{ secrets.GITHUB_TOKEN }}
-        force: false
+        force: true
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
         branch: 'autofix'
