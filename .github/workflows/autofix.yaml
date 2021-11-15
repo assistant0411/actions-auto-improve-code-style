@@ -26,4 +26,11 @@ jobs:
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
         branch: 'autofix'
-
+    - name: Run the Action
+      uses: devops-infra/action-pull-request@v0.4.2
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        source_branch: 'autofix'
+        target_branch: ${{ github.ref_name	}}
+        title: Autofix
+        body: "**Automated pull request**"
