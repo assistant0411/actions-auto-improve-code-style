@@ -13,20 +13,31 @@ jobs:
       run: npx eslint . --fix --ext .js
     - name: Check for autofixes
       run: git status | grep modified
-    - uses: peterjgrainger/action-create-branch@v2.0.1
+    - name: Create branch
+      uses: peterjgrainger/action-create-branch@v2.0.1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         branch: 'autofix'
-    - uses: connor-baer/action-sync-branch@main
+    - name: Sync branch
+      uses: connor-baer/action-sync-branch@main
       with:
         branch: 'autofix'
         token: ${{ secrets.GITHUB_TOKEN }}
         force: true
-    - uses: stefanzweifel/git-auto-commit-action@v4
+    - name: Commit auto fixes
+      uses: stefanzweifel/git-auto-commit-action@v4
       with:
         branch: 'autofix'
-    - name: Run the Action
+    - uses: 8BitJonny/gh-get-current-pr@1.2.0
+      id: PR
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        # Verbose setting SHA when using Pull_Request event trigger to fix #16
+        sha: ${{ github.event.pull_request.head.sha }}
+        # Only return if PR is still open
+        filterOutClosed: true
+    - name: Create a new PR
       uses: devops-infra/action-pull-request@v0.4.2
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
