@@ -15,3 +15,5 @@ jobs:
       run: git status | grep modified
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v3
+      with:
+        branch: ${{ github.ref_name }}/autofix
