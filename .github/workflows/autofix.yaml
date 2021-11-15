@@ -18,6 +18,11 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         branch: 'autofix'
+    - uses: connor-baer/action-sync-branch@master
+      with:
+        branch: 'autofix'
+        token: ${{ secrets.GITHUB_TOKEN }}
+        force: false
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
         branch: 'autofix'
